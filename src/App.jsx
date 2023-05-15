@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import logo from './assets/home-icon'
+import './App.css';
+import Header from "./components/Header";
+import { useParams } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import { Home } from "../src/components/Home";
+import { Beers } from "../src/components/Beers";
+import { RandomBeers } from "./components/RandomBeers";
+import { NewBeer } from "./components/NewBeer";
+import React, { useState, useEffect } from "react";
+import { BeerDetails } from "./components/BeerDetails";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Edit <code>src/App.js</code> and save to reload.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/beers" element={<Beers />} />
+        <Route path="/beer/:beerId" element={<BeerDetails />} />
+        <Route path="/randombeers" element={<RandomBeers />} />
+        <Route path="/newbeers" element={<NewBeer />} />
+      </Routes>
     </div>
-  )
+  );
 }
 
 export default App
