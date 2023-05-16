@@ -24,7 +24,7 @@ export function Beers() {
   console.log(beer);
 
   return !beer ? (
-    <div>Carregando Informações...</div>
+    <div>Loading Information...</div>
   ) : (
     <div>
       <Header />
